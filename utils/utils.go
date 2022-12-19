@@ -2,6 +2,7 @@ package utils
 
 import (
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -21,4 +22,14 @@ func HttpGet(url string) string {
 	body := make([]byte, 1024)
 	r.Body.Read(body)
 	return string(body)
+}
+
+func HttpPOST(url, contentType, body string) string {
+	r, _ := http.Post(url, contentType, strings.NewReader(body))
+	if r == nil {
+		return ""
+	}
+	rBody := make([]byte, 1024)
+	r.Body.Read(rBody)
+	return string(rBody)
 }

@@ -1,4 +1,4 @@
-package examples
+package a01_std_http
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ func A01_std_http() {
 	fmt.Println("Start server")
 
 	// 循环调用方法，Get 请求
-	utils.TimedLoop(time.Second, time.Second, 5, func() {
+	utils.TimedLoop(time.Second, time.Millisecond, 5, func() {
 		fmt.Println(utils.HttpGet("http://localhost:8080/hello"))
 	})
 }
